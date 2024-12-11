@@ -1,0 +1,34 @@
+gitall()
+{
+	local flag_s=false
+	local flag_m=false
+	local flag_m_valule=""
+	local commit_msg=""
+	local sync_path="~/42-sync"
+
+	while getopts "sm:" opt; do
+		case $opt in
+			m) flag_m=true 
+			   flag_m_value="$OPTARG" ;;
+			s) flag_s=true;;
+			*) echo "Opzione non valida: -$OPTARG" 
+			   exit 1 ;;
+		esac
+	done
+
+	shift $((OPTIND - 1))
+
+	if $flag_m; then
+		commit_msg="\"$flag_m_value\""
+	else
+		commit_msg="\"automatic msg: committed $1\""
+	fi
+	
+	
+	git add $1; git commit -m $commit_msg ; git push
+	echo "messaggio di commit: $commit_msg"
+	
+	#if $flag_s; then
+		#(cp $s1 $sync_path;  cd $sync_path;)
+}
+
