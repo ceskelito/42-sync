@@ -6,10 +6,16 @@
 
 int				main()
 {
-	char	str[] = "lorem ipsum dolor sit amet";
-	//char	*str_dup;
+	char	*s = "1234a5678a90a1111";
+	char	c = 'a';
+	char	**spl = ft_split(s, c);
 	
-	printf("%s", ft_strdup(str));
+	int i = 0;
+	while(i < 4)
+	{
+		printf("%s\n", spl[i]);
+		i++;
+	}
 
 	return (0);
 }
